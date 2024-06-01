@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai_77</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            --height : 100px;
+            background-color: orange;
+            height: var(--height);
+            /* cach 1 :  */
+
+            /* text-align: center;  */
+            /* co tinh chat inherited */
+            /* line-height: var(--height); */
+
+            /* cach 2 */
+            display : flex;
+            /* align-items : center;
+            justify-content : space-around; */
+
+            /* cach 3 */
+            /* position: relative; */
+        }
+
+        /* h3 { 
+            margin: auto;
+        } */
+
+        /* h3{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        } */
+
+        h3{
+            margin: auto;
+            position: relative;
+        }
+        h3::after{
+            position: absolute;
+            left: -10px;
+            content: "";
+            border-left: 3px solid #333;
+            height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>Center Me</h3>
+
+    </div>
+</body>
+
+</html>
