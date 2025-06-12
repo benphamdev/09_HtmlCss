@@ -41,6 +41,153 @@ class TypeWriter {
   }
 }
 
+// Theme Management System
+class ThemeManager {
+  constructor() {
+    this.currentTheme = localStorage.getItem("portfolio-theme") || "dark";
+    this.themeToggle = null;
+    this.themeIcon = null;
+    this.init();
+  }
+
+  init() {
+    // Apply saved theme immediately
+    this.applyTheme(this.currentTheme);
+
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", () => {
+      this.setupEventListeners();
+    });
+  }
+
+  setupEventListeners() {
+    this.themeToggle = document.getElementById("themeToggle");
+    this.themeIcon = document.getElementById("themeIcon");
+
+    if (this.themeToggle) {
+      this.themeToggle.addEventListener("click", () => {
+        this.toggleTheme();
+      });
+    }
+
+    // Update icon based on current theme
+    this.updateIcon();
+  }
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === "dark" ? "light" : "dark";
+    this.applyTheme(this.currentTheme);
+    this.updateIcon();
+
+    // Save to localStorage
+    localStorage.setItem("portfolio-theme", this.currentTheme);
+
+    // Add visual feedback
+    this.showThemeChangeNotification();
+  }
+
+  applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+
+    // Update meta theme-color for mobile browsers
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement("meta");
+      metaThemeColor.name = "theme-color";
+      document.head.appendChild(metaThemeColor);
+    }
+
+    metaThemeColor.content = theme === "light" ? "#f0f8ff" : "#0d1117";
+
+    // Force navbar to update its background
+    this.updateNavbarBackground();
+  }
+
+  updateNavbarBackground() {
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      // Remove inline styles to let CSS variables take effect
+      navbar.style.removeProperty("background");
+      navbar.style.removeProperty("backdrop-filter");
+
+      // Trigger a reflow to ensure CSS variables are applied
+      navbar.offsetHeight;
+
+      // Reapply scroll-based styling if needed
+      if (window.scrollY > 50) {
+        navbar.style.background = getComputedStyle(document.documentElement).getPropertyValue(
+          "--navbar-bg-scrolled"
+        );
+        navbar.style.backdropFilter = "blur(20px)";
+      }
+    }
+  }
+
+  updateIcon() {
+    if (this.themeIcon) {
+      // Add rotation animation during icon change
+      this.themeIcon.style.transform = "rotate(180deg)";
+
+      setTimeout(() => {
+        if (this.currentTheme === "dark") {
+          this.themeIcon.className = "fas fa-sun";
+          this.themeToggle.setAttribute("aria-label", "Switch to light theme");
+        } else {
+          this.themeIcon.className = "fas fa-moon";
+          this.themeToggle.setAttribute("aria-label", "Switch to dark theme");
+        }
+
+        // Reset rotation
+        this.themeIcon.style.transform = "rotate(0deg)";
+      }, 150);
+    }
+  }
+
+  showThemeChangeNotification() {
+    const notification = document.createElement("div");
+    notification.className = "theme-notification";
+    notification.textContent = `${
+      this.currentTheme === "light" ? "☀️ Light Mode" : "🌙 Dark Mode"
+    } activated!`;
+    notification.style.cssText = `
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: var(--accent-primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      z-index: 10000;
+      transform: translateX(300px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      backdrop-filter: blur(10px);
+    `;
+
+    document.body.appendChild(notification);
+
+    // Animate in
+    setTimeout(() => {
+      notification.style.transform = "translateX(0)";
+    }, 100);
+
+    // Animate out and remove
+    setTimeout(() => {
+      notification.style.transform = "translateX(300px)";
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          document.body.removeChild(notification);
+        }
+      }, 300);
+    }, 2500);
+  }
+}
+
+// Initialize theme manager
+const themeManager = new ThemeManager();
+
 // Initialize Typing Effect
 document.addEventListener("DOMContentLoaded", function () {
   const typedElement = document.getElementById("typed-text");
@@ -103,38 +250,147 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Navbar Background on Scroll
-window.addEventListener("scroll", function () {
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 50) {
-    navbar.style.background = "rgba(13, 17, 23, 0.98)";
-  } else {
-    navbar.style.background = "rgba(13, 17, 23, 0.95)";
-  }
-});
+// Navbar Background on Scroll (Legacy - now handled by CSS variables)
+// This function is kept for backward compatibility but uses CSS variables
 
-// Intersection Observer for Animations
+// Enhanced Intersection Observer for Scroll Animations
 const observerOptions = {
-  threshold: 0.1,
+  threshold: 0.2,
   rootMargin: "0px 0px -50px 0px",
 };
 
-const observer = new IntersectionObserver(function (entries) {
+const scrollObserver = new IntersectionObserver(function (entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in");
+      // Element is visible - add animation
+      const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 50;
+
+      setTimeout(() => {
+        entry.target.classList.add("animate");
+
+        // Add extra effects for specific elements
+        if (entry.target.classList.contains("tech-item")) {
+          entry.target.style.animationDelay = delay + "ms";
+        }
+
+        if (entry.target.classList.contains("timeline-item")) {
+          entry.target.style.animationDelay = delay + "ms";
+        }
+      }, Math.min(delay, 300)); // Limit max delay to 300ms
+    } else {
+      // Element is not visible - remove animation for future use
+      entry.target.classList.remove("animate");
+
+      // Reset animation delay
+      if (entry.target.classList.contains("tech-item") || entry.target.classList.contains("timeline-item")) {
+        entry.target.style.animationDelay = "0ms";
+      }
     }
   });
 }, observerOptions);
 
-// Observe elements for animation
+// Initialize animations on scroll
 document.addEventListener("DOMContentLoaded", function () {
-  const animatedElements = document.querySelectorAll(
-    ".about-item, .tech-item, .section-title, .timeline-item, .contact-item"
-  );
-  animatedElements.forEach((el) => {
-    observer.observe(el);
+  // Add animation classes to elements with improved logic
+  const sectionTitles = document.querySelectorAll(".section-title");
+  sectionTitles.forEach((title, index) => {
+    title.classList.add("animate-on-scroll", "fade-in");
+    // Set initial state
+    title.style.transitionDelay = index * 100 + "ms";
   });
+
+  const aboutItems = document.querySelectorAll(".about-item");
+  aboutItems.forEach((item, index) => {
+    item.classList.add("animate-on-scroll", index % 2 === 0 ? "slide-in-left" : "slide-in-right");
+  });
+
+  const techItems = document.querySelectorAll(".tech-item");
+  techItems.forEach((item, index) => {
+    item.classList.add("animate-on-scroll", "scale-in");
+  });
+
+  const timelineItems = document.querySelectorAll(".timeline-item");
+  timelineItems.forEach((item, index) => {
+    item.classList.add("animate-on-scroll", index % 2 === 0 ? "slide-in-left" : "slide-in-right");
+  });
+
+  const contactItems = document.querySelectorAll(".contact-item");
+  contactItems.forEach((item, index) => {
+    item.classList.add("animate-on-scroll", "zoom-in");
+  });
+
+  const projectCards = document.querySelectorAll(".project-card");
+  projectCards.forEach((card, index) => {
+    card.classList.add("animate-on-scroll", "fade-in");
+  });
+
+  // Observe all animated elements
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+  animatedElements.forEach((el) => {
+    scrollObserver.observe(el);
+  });
+
+  // Add debug info (remove in production)
+  console.log(`Observing ${animatedElements.length} elements for scroll animations`);
+
+  // Force initial state for all animated elements
+  animatedElements.forEach((el) => {
+    el.classList.remove("animate");
+  });
+});
+
+// Additional function to reset animations manually (for debugging)
+function resetAllAnimations() {
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+  animatedElements.forEach((el) => {
+    el.classList.remove("animate");
+    // Force reflow
+    el.offsetHeight;
+  });
+  console.log("All animations reset");
+}
+
+// Function to trigger animations manually (for debugging)
+function triggerAllAnimations() {
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+  animatedElements.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add("animate");
+    }, index * 50);
+  });
+  console.log("All animations triggered");
+}
+
+// Additional scroll effects for navbar
+let lastScrollTop = 0;
+window.addEventListener("scroll", function () {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const navbar = document.querySelector(".navbar");
+
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    // Scrolling down
+    navbar.style.transform = "translateY(-100%)";
+  } else {
+    // Scrolling up
+    navbar.style.transform = "translateY(0)";
+  }
+
+  lastScrollTop = scrollTop;
+
+  // Change navbar background based on scroll position using CSS variables
+  if (window.scrollY > 50) {
+    // More opaque background when scrolled
+    navbar.style.background = getComputedStyle(document.documentElement).getPropertyValue(
+      "--navbar-bg-scrolled"
+    );
+    navbar.style.backdropFilter = "blur(20px)";
+  } else {
+    // Default background
+    navbar.style.background = getComputedStyle(document.documentElement).getPropertyValue("--navbar-bg");
+    navbar.style.backdropFilter = getComputedStyle(document.documentElement).getPropertyValue(
+      "--navbar-blur"
+    );
+  }
 });
 
 // Tech Stack Hover Effects
@@ -164,7 +420,7 @@ function createScrollToTopButton() {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: linear-gradient(45deg, #ff006e, #8338ec);
+        background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
         border: none;
         color: white;
         font-size: 20px;
@@ -173,7 +429,7 @@ function createScrollToTopButton() {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 4px 20px rgba(131, 56, 236, 0.3);
+        box-shadow: 0 4px 20px var(--shadow-color);
     `;
 
   document.body.appendChild(scrollButton);
