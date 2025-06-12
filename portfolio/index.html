@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phạm Duy Chiến - Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span>Portfolio</span>
+        </div>
+        <div class="nav-menu">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#tech-stack" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#connect" class="nav-link">Connect</a>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-background">
+        <img
+          src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif"
+          alt="Background GIF"
+          class="hero-gif"
+        />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span id="typed-text"></span>
+            <span class="cursor">|</span>
+          </h1>
+          <p class="hero-subtitle">A passionate System Engineer from Việt Nam 🇻🇳</p>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-title">🎯 About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <div class="about-item">
+              <i class="fas fa-telescope"></i>
+              <span><strong>Currently working as:</strong> System Engineer</span>
+            </div>
+            <div class="about-item">
+              <i class="fas fa-seedling"></i>
+              <span><strong>Currently learning:</strong> DevOps Skills & Cloud Technologies</span>
+            </div>
+            <div class="about-item">
+              <i class="fas fa-users"></i>
+              <span><strong>Looking to collaborate on:</strong> Cybersecurity Projects</span>
+            </div>
+            <div class="about-item">
+              <i class="fas fa-hands-helping"></i>
+              <span><strong>Looking for help with:</strong> Advanced DevOps Practices</span>
+            </div>
+            <div class="about-item">
+              <i class="fas fa-comments"></i>
+              <span><strong>Ask me about:</strong> Spring Boot, MySQL, System Architecture</span>
+            </div>
+            <div class="about-item">
+              <i class="fas fa-envelope"></i>
+              <span
+                ><strong>How to reach me:</strong>
+                <a href="mailto:phamchien152003@gmail.com">phamchien152003@gmail.com</a></span
+              >
+            </div>
+            <div class="about-item">
+              <i class="fas fa-bolt"></i>
+              <span><strong>Fun fact:</strong> I debug faster with coffee ☕</span>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://i.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.webp"
+              alt="Programming GIF"
+              class="programming-gif"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Background Section -->
+    <section id="education" class="education-section">
+      <div class="container">
+        <h2 class="section-title">🎓 Education & Background</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Đại học Sư phạm Kỹ thuật TP.HCM</h3>
+              <h4>Information Security</h4>
+              <span class="timeline-date">2022 - 2026</span>
+              <p>
+                Sinh viên năm 4 chuyên ngành An toàn thông tin, tích lũy kiến thức về bảo mật hệ thống, phân
+                tích lỗ hổng bảo mật và phát triển các giải pháp an ninh mạng.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fas fa-school"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>THPT Trần Hưng Đạo</h3>
+              <h4>Trung học Phổ thông</h4>
+              <span class="timeline-date">Cấp 3</span>
+              <p>
+                Xã Tân Hải, TX Phú Mỹ, Tỉnh Bà Rịa Vũng Tàu. Giai đoạn quan trọng định hướng nghề nghiệp và
+                phát triển tư duy logic.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>THCS Tân Lập</h3>
+              <h4>Trung học Cơ sở</h4>
+              <span class="timeline-date">Cấp 2</span>
+              <p>
+                Nơi tôi bắt đầu khám phá niềm đam mê với công nghệ và toán học, đặt nền móng cho hành trình
+                học tập sau này.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fas fa-home"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Tiểu học Tân Lập</h3>
+              <h4>Tiểu học</h4>
+              <span class="timeline-date">Cấp 1</span>
+              <p>
+                Xã Tân Lập, Huyện Vũ Thư, Tỉnh Thái Bình. Nơi bắt đầu hành trình học tập và hình thành những
+                giá trị cơ bản.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="tech-section">
+      <div class="container">
+        <h2 class="section-title">🛠️ Tech Stack</h2>
+
+        <div class="tech-category">
+          <h3>Programming Languages</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                alt="Java"
+              />
+              <span>Java</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                alt="Python"
+              />
+              <span>Python</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+              />
+              <span>JavaScript</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
+                alt="C++"
+              />
+              <span>C++</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+                alt="HTML5"
+              />
+              <span>HTML5</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+                alt="CSS3"
+              />
+              <span>CSS3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3>Frameworks & Libraries</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring" />
+              <span>Spring</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
+                alt="Node.js"
+              />
+              <span>Node.js</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
+                alt="React"
+              />
+              <span>React</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg"
+                alt="Express"
+              />
+              <span>Express</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3>Databases & Storage</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+                alt="MySQL"
+              />
+              <span>MySQL</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg"
+                alt="PostgreSQL"
+              />
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
+                alt="MongoDB"
+              />
+              <span>MongoDB</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="SQLite" />
+              <span>SQLite</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original-wordmark.svg"
+                alt="Redis"
+              />
+              <span>Redis</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg" alt="Elasticsearch" />
+              <span>Elasticsearch</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3>DevOps & Cloud Tools</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg"
+                alt="Docker"
+              />
+              <span>Docker</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" />
+              <span>Kubernetes</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="Jenkins" />
+              <span>Jenkins</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                alt="AWS"
+              />
+              <span>AWS</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg"
+                alt="Azure"
+              />
+              <span>Azure</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg"
+                alt="Linux"
+              />
+              <span>Linux</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash" />
+              <span>Bash</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" />
+              <span>Git</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" alt="Grafana" />
+              <span>Grafana</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="Firebase" />
+              <span>Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3>Development Tools</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" />
+              <span>Postman</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg"
+                alt="Android"
+              />
+              <span>Android</span>
+            </div>
+            <div class="tech-item">
+              <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="TensorFlow" />
+              <span>TensorFlow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <h2 class="section-title">🚀 Featured Projects</h2>
+        <div class="projects-grid">
+          <!-- Tea Shop Project -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Tea Shop Project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/AiNga04/Ecommerce/tree/dev3"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fab fa-github"></i>
+                    <span>Code</span>
+                  </a>
+                  <a href="https://duychien.shop/home" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>Tea Shop</h3>
+                <span class="project-date">Oct 2024 - Dec 2024</span>
+              </div>
+              <p class="project-description">
+                A modern e-commerce platform for tea products featuring user authentication, product
+                management, shopping cart functionality, and secure payment processing. Built with responsive
+                design and optimized user experience.
+              </p>
+              <div class="project-bottom">
+                <div class="project-tech">
+                  <span class="tech-tag">E-commerce</span>
+                  <span class="tech-tag">Responsive</span>
+                  <span class="tech-tag">Payment</span>
+                  <span class="tech-tag">Authentication</span>
+                </div>
+                <div class="project-actions">
+                  <a href="https://duychien.shop/home" target="_blank" class="btn-primary">
+                    <i class="fas fa-eye"></i>
+                    View Live
+                  </a>
+                  <a
+                    href="https://github.com/AiNga04/Ecommerce/tree/dev3"
+                    target="_blank"
+                    class="btn-secondary"
+                  >
+                    <i class="fab fa-github"></i>
+                    Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Banking App Project -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                alt="Banking App Project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/benphamdev/BankingApp/tree/main"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fab fa-github"></i>
+                    <span>Code</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>Banking Application</h3>
+                <span class="project-date">May 2024 - Jun 2024</span>
+              </div>
+              <p class="project-description">
+                A comprehensive banking application developed in Java allowing users to manage their finances
+                with features including account creation, money deposits and withdrawals, transaction history
+                viewing. Supports both admin and user roles with specific functionalities.
+              </p>
+              <div class="project-bottom">
+                <div class="project-tech">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">Banking</span>
+                  <span class="tech-tag">Database</span>
+                  <span class="tech-tag">Security</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://github.com/benphamdev/BankingApp/tree/main"
+                    target="_blank"
+                    class="btn-primary"
+                  >
+                    <i class="fab fa-github"></i>
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer & Connect Section -->
+    <section id="connect" class="connect-section">
+      <div class="container">
+        <h2 class="section-title">🌐 Connect with Me</h2>
+
+        <div class="contact-info">
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Phone</h4>
+                <a href="tel:0833998180">0833998180</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <a href="mailto:phamchien152003@gmail.com">phamchien152003</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Location</h4>
+                <span>TP Hồ Chí Minh, Việt Nam</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="contact-details">
+                <h4>GitHub</h4>
+                <a href="https://github.com/benphamdev" target="_blank">@benphamdev</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-details">
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/chiến-phạm-62b93a2a0/" target="_blank">Phạm Duy Chiến</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="thank-you">💖 Thank you for visiting my profile! 💖</p>
+      </div>
+      <div class="footer-wave">
+        <img
+          src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"
+          alt="Footer Wave"
+        />
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
