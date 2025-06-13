@@ -13,8 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Copy portfolio files to root
+        run: |
+          cp -r portfolio/* .
+          cp -r portfolio/.* . 2>/dev/null || true
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: portfolio # Thư mục portfolio sẽ được deploy
-          branch: gh-pages # Nhánh để deploy
+          folder: . # Deploy từ thư mục gốc
+          branch: gh-pages
